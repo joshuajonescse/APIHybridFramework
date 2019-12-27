@@ -28,39 +28,33 @@
         </plugin>
         
         <plugin>
-            <groupId>org.sonarsource.scanner.maven</groupId>
-            <artifactId>sonar-maven-plugin</artifactId>
-            <version>3.4.0.905</version>
-        </plugin>
-
-        <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.7.9</version>
-             <configuration>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.6.3.201306030806</version>
+    <executions>
+      <!-- prepare agent for measuring integration tests -->
+      <execution>
+        <id>prepare-integration-tests</id>
+        <phase>pre-integration-test</phase>
+        <goals>
+          <goal>prepare-agent</goal>
+        </goals>
+        <configuration>
           <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+        </configuration>
+      </execution>
+      <execution>
+        <id>jacoco-site</id>
+        <phase>post-integration-test</phase>
+        <goals>
+          <goal>report</goal>
+        </goals>
+        <configuration>
           <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
         </configuration>
-            <executions>
-                <execution>
-                    <id>agent</id>
-                    <goals>
-                        <goal>prepare-agent</goal>
-                    </goals>
-                     <configuration>
-              <propertyName>itCoverageAgent</propertyName>
-            </configuration>
-                </execution>
-                 <execution>
-                   <id>jacoco-site</id>
-                   <phase>package</phase>
-                   <goals>
-                    <goal>report</goal>
-                   </goals>
-                </execution>
-            </executions>
-        </plugin>
-        
+      </execution>
+    </executions>
+  </plugin>
        <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-surefire-plugin</artifactId>
