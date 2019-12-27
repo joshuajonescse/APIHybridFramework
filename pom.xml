@@ -38,8 +38,8 @@
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.7.9</version>
              <configuration>
-          <destfile>${basedir}/target/coverage-reports/jacoco-unit.exec</destfile>
-          <datafile>${basedir}/target/coverage-reports/jacoco-unit.exec</datafile>
+          <destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+          <dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
         </configuration>
             <executions>
                 <execution>
@@ -47,6 +47,9 @@
                     <goals>
                         <goal>prepare-agent</goal>
                     </goals>
+                     <configuration>
+              <propertyName>itCoverageAgent</propertyName>
+            </configuration>
                 </execution>
                  <execution>
                    <id>jacoco-site</id>
