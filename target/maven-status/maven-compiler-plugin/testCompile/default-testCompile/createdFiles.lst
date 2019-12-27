@@ -1,0 +1,3 @@
+com\testcases\TestBase.class
+com\testcases\GetrequestTest.class
+com\testcases\POSTrequestTest.class

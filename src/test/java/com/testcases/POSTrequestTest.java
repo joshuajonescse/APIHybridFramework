@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.maincode.POSTrequest;
+import com.utilities.TestBase;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -20,18 +21,21 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import static org.hamcrest.Matchers.*;
 
-public class POSTrequestTest extends TestBase {
+public class POSTrequestTest extends TestBase{
 	
 	POSTrequest obj1 = new POSTrequest();
 	
      @Test
 	public void postAPITest() {
     	 
-    		logger.info("*************Method 1 in Post  ****************");
+    	logger.info("*************Method 1 in Post  ****************");
 				
-		Assert.assertEquals(obj1.postAPI().getStatusCode(), 201);
-	//Assert.assertEquals(obj1.postAPI().getBody().jsonPath().get("author"),"Mssaxy");
+		Response res = obj1.postAPI();
+		Assert.assertEquals(res.getStatusCode(), 201);
+		Assert.assertEquals(res.getBody().jsonPath().get("name"), "kamal");
+		Assert.assertEquals(res.getBody().jsonPath().get("job"), "cricket");
 		
+			
 	}
 
 }

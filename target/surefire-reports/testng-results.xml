@@ -2,50 +2,50 @@
 <testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2019-12-22T15:32:43Z" name="Suite" finished-at="2019-12-22T15:32:58Z" duration-ms="15069">
+  <suite started-at="2019-12-22T16:23:46Z" name="Suite" finished-at="2019-12-22T16:23:59Z" duration-ms="12600">
     <groups>
     </groups>
-    <test started-at="2019-12-22T15:32:43Z" name="Test" finished-at="2019-12-22T15:32:58Z" duration-ms="15069">
+    <test started-at="2019-12-22T16:23:46Z" name="Test" finished-at="2019-12-22T16:23:59Z" duration-ms="12600">
       <class name="com.testcases.POSTrequestTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.testcases.POSTrequestTest@465232e9]" started-at="2019-12-22T15:32:57Z" name="setup" finished-at="2019-12-22T15:32:57Z" duration-ms="16" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.testcases.POSTrequestTest@465232e9]" started-at="2019-12-22T16:23:58Z" name="setup" finished-at="2019-12-22T16:23:58Z" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="postAPITest()[pri:0, instance:com.testcases.POSTrequestTest@465232e9]" started-at="2019-12-22T15:32:57Z" name="postAPITest" finished-at="2019-12-22T15:32:58Z" duration-ms="263" status="PASS">
+        <test-method signature="postAPITest()[pri:0, instance:com.testcases.POSTrequestTest@465232e9]" started-at="2019-12-22T16:23:58Z" name="postAPITest" finished-at="2019-12-22T16:23:59Z" duration-ms="762" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postAPITest -->
       </class> <!-- com.testcases.POSTrequestTest -->
       <class name="com.testcases.GetrequestTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:43Z" name="setup" finished-at="2019-12-22T15:32:43Z" duration-ms="163" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:47Z" name="setup" finished-at="2019-12-22T16:23:47Z" duration-ms="174" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="getListTest()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:43Z" name="getListTest" finished-at="2019-12-22T15:32:54Z" duration-ms="11027" status="PASS">
+        <test-method signature="getListTest()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:47Z" name="getListTest" finished-at="2019-12-22T16:23:55Z" duration-ms="8081" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getListTest -->
-        <test-method signature="howEachFormatLooksLike()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:55Z" name="howEachFormatLooksLike" finished-at="2019-12-22T15:32:55Z" duration-ms="880" status="PASS">
+        <test-method signature="howEachFormatLooksLike()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:55Z" name="howEachFormatLooksLike" finished-at="2019-12-22T16:23:57Z" duration-ms="1126" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- howEachFormatLooksLike -->
-        <test-method signature="pathParamSinglePhoto_ResponseTest()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:55Z" name="pathParamSinglePhoto_ResponseTest" finished-at="2019-12-22T15:32:56Z" duration-ms="353" status="PASS">
+        <test-method signature="pathParamSinglePhoto_ResponseTest()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:57Z" name="pathParamSinglePhoto_ResponseTest" finished-at="2019-12-22T16:23:57Z" duration-ms="248" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pathParamSinglePhoto_ResponseTest -->
-        <test-method signature="queryParamSinglePhoto_ResponseTest()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:56Z" name="queryParamSinglePhoto_ResponseTest" finished-at="2019-12-22T15:32:57Z" duration-ms="826" status="PASS">
+        <test-method signature="queryParamSinglePhoto_ResponseTest()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:57Z" name="queryParamSinglePhoto_ResponseTest" finished-at="2019-12-22T16:23:57Z" duration-ms="439" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- queryParamSinglePhoto_ResponseTest -->
-        <test-method signature="testSinglePhoto_Response()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:57Z" name="testSinglePhoto_Response" finished-at="2019-12-22T15:32:57Z" duration-ms="268" status="PASS">
+        <test-method signature="testSinglePhoto_Response()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:57Z" name="testSinglePhoto_Response" finished-at="2019-12-22T16:23:57Z" duration-ms="283" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSinglePhoto_Response -->
-        <test-method signature="testSinglePhoto_ResponseToString()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:57Z" name="testSinglePhoto_ResponseToString" finished-at="2019-12-22T15:32:57Z" duration-ms="260" status="PASS">
+        <test-method signature="testSinglePhoto_ResponseToString()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:57Z" name="testSinglePhoto_ResponseToString" finished-at="2019-12-22T16:23:58Z" duration-ms="302" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSinglePhoto_ResponseToString -->
-        <test-method signature="testSinglePhoto_String()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T15:32:57Z" name="testSinglePhoto_String" finished-at="2019-12-22T15:32:57Z" duration-ms="230" status="PASS">
+        <test-method signature="testSinglePhoto_String()[pri:0, instance:com.testcases.GetrequestTest@37313c65]" started-at="2019-12-22T16:23:58Z" name="testSinglePhoto_String" finished-at="2019-12-22T16:23:58Z" duration-ms="307" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSinglePhoto_String -->

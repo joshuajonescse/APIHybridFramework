@@ -1,12 +1,17 @@
-package com.maincode;
-
-import org.testng.annotations.BeforeClass;
+package com.testcases;
 
 import org.testng.annotations.Test;
+
+import com.utilities.TestBase;
+import com.utilities.XLUtils;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Cookie;
@@ -17,17 +22,19 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import static org.hamcrest.Matchers.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 
+public class PostDataProviderTest extends TestBase{
+	
+   HashMap map = new HashMap(); 
 
-public class POSTrequest {
-	
-	HashMap map = new HashMap(); 
-	
-	public Response postAPI() {
+   
+	@Test(dataProvider="empdataprovider")
+	public void postAPI(String ename, String ejob) {
 		
-		map.put("name","kamal");
-		map.put("job", "cricket");
+		map.put("name",ename);
+		map.put("job", ejob);
 		
 		Response response = 
 		
@@ -42,10 +49,9 @@ public class POSTrequest {
 	     .then()
 	        .extract().response();
 	
-	return response;
-	
-	
-	
+		Assert.assertEquals(response.getStatusCode(), 201);	
+	   System.out.println(response.getBody().jsonPath().prettify());
 	}
+
 
 }
