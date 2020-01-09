@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XLUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">APIHybridFramework</a> &gt; <a href="index.source.html" class="el_package">com.utilities</a> &gt; <span class="el_source">XLUtils.java</span></div><h1>XLUtils.java</h1><pre class="source lang-java linenums">package com.utilities;
+
+import java.io.FileInputStream;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
+
+
+
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+
+<span class="fc" id="L21">public class XLUtils {</span>
+	
+	public static FileInputStream fi;
+	public static FileOutputStream fo;
+	public static XSSFWorkbook wb;
+	public static XSSFSheet ws;
+	public static XSSFRow row;
+	public static XSSFCell cell;
+	public static XSSFCellStyle style;
+	
+	
+	
+	public static int getRowCount(String xlfile,String xlsheet) throws IOException 
+	{
+		int rowcount;
+<span class="fc" id="L36">		fi=new FileInputStream(xlfile);</span>
+<span class="fc" id="L37">		wb = new XSSFWorkbook(fi);</span>
+<span class="fc" id="L38">		ws = wb.getSheet(xlsheet);</span>
+<span class="fc" id="L39">		rowcount = ws.getLastRowNum();</span>
+<span class="fc" id="L40">		wb.close();</span>
+<span class="fc" id="L41">		fi.close();</span>
+<span class="fc" id="L42">		return rowcount;	</span>
+	}
+	public static int getCellCount(String xlfile,String xlsheet,int rownum) throws IOException
+	{
+		int cellcount;
+<span class="fc" id="L47">		fi= new FileInputStream(xlfile);</span>
+<span class="fc" id="L48">		wb = new XSSFWorkbook(fi);</span>
+<span class="fc" id="L49">		ws = wb.getSheet(xlsheet);</span>
+<span class="fc" id="L50">		row =  ws.getRow(rownum);</span>
+<span class="fc" id="L51">		cellcount = row.getLastCellNum();</span>
+<span class="fc" id="L52">		wb.close();</span>
+<span class="fc" id="L53">		fi.close();</span>
+<span class="fc" id="L54">		return cellcount;</span>
+		
+	}
+	public static String getCellData(String xlfile,String xlsheet,int rownum,int colnum) throws IOException 
+	{
+		String data;
+<span class="fc" id="L60">		fi = new FileInputStream(xlfile);</span>
+<span class="fc" id="L61">		wb = new XSSFWorkbook(fi);</span>
+<span class="fc" id="L62">		ws = wb.getSheet(xlsheet);</span>
+<span class="fc" id="L63">		row = ws.getRow(rownum);</span>
+<span class="fc" id="L64">		cell = row.getCell(colnum);</span>
+		try 
+		{
+<span class="fc" id="L67">			data = cell.getStringCellValue();</span>
+<span class="fc" id="L68">			return data;</span>
+			
+<span class="nc" id="L70">		} catch (Exception e) {</span>
+<span class="nc" id="L71">			data=&quot;&quot;;</span>
+<span class="nc" id="L72">			return data;</span>
+		}
+	}
+		
+	public static void setCellData(String xlfile,String xlsheet,int rownum,int colnum,String data) throws IOException
+	{
+		
+<span class="nc" id="L79">		fi = new FileInputStream(xlfile);</span>
+<span class="nc" id="L80">		wb = new XSSFWorkbook(fi);</span>
+<span class="nc" id="L81">		ws = wb.getSheet(xlsheet);</span>
+<span class="nc" id="L82">		row = ws.getRow(rownum);</span>
+<span class="nc" id="L83">		cell = row.createCell(colnum);</span>
+<span class="nc" id="L84">		cell.setCellValue(data);</span>
+		
+<span class="nc" id="L86">		fo = new FileOutputStream(xlfile);</span>
+<span class="nc" id="L87">		wb.write(fo);</span>
+<span class="nc" id="L88">		fi.close();</span>
+<span class="nc" id="L89">		fo.close();</span>
+			
+<span class="nc" id="L91">	}</span>
+	public static void fillGreenColour(String xlfile,String xlsheet,int rownum,int colnum) throws IOException
+	{
+<span class="nc" id="L94">		fi = new FileInputStream(xlfile);</span>
+<span class="nc" id="L95">		wb = new XSSFWorkbook(fi);</span>
+<span class="nc" id="L96">		ws = wb.getSheet(xlsheet);</span>
+<span class="nc" id="L97">		row = ws.getRow(rownum);</span>
+<span class="nc" id="L98">		cell = row.getCell(colnum);</span>
+<span class="nc" id="L99">		style = wb.createCellStyle();</span>
+<span class="nc" id="L100">		style.setFillForegroundColor(IndexedColors.GREEN.getIndex());</span>
+<span class="nc" id="L101">		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);</span>
+<span class="nc" id="L102">		cell.setCellStyle(style);</span>
+		
+<span class="nc" id="L104">		fo=new FileOutputStream(xlfile);</span>
+<span class="nc" id="L105">		wb.write(fo);</span>
+<span class="nc" id="L106">		wb.close();</span>
+<span class="nc" id="L107">		fi.close();</span>
+<span class="nc" id="L108">		fo.close();</span>
+<span class="nc" id="L109">	}</span>
+	public static void fillRedColour(String xlfile,String xlsheet,int rownum,int colnum) throws IOException 
+	{
+<span class="nc" id="L112">		fi = new FileInputStream(xlfile);</span>
+<span class="nc" id="L113">		wb = new XSSFWorkbook(fi);</span>
+<span class="nc" id="L114">		ws = wb.getSheet(xlsheet);</span>
+<span class="nc" id="L115">		row = ws.getRow(rownum);</span>
+<span class="nc" id="L116">		cell = row.getCell(colnum);</span>
+<span class="nc" id="L117">		style = wb.createCellStyle();</span>
+<span class="nc" id="L118">		style.setFillForegroundColor(IndexedColors.RED.getIndex());</span>
+<span class="nc" id="L119">		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);</span>
+<span class="nc" id="L120">		cell.setCellStyle(style);</span>
+		
+<span class="nc" id="L122">		fo = new FileOutputStream(xlfile);</span>
+<span class="nc" id="L123">		wb.write(fo);</span>
+<span class="nc" id="L124">		wb.close();</span>
+<span class="nc" id="L125">		fi.close();</span>
+<span class="nc" id="L126">		fo.close();</span>
+	
+<span class="nc" id="L128">	}</span>
+		
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

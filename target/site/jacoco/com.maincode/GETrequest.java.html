@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GETrequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">APIHybridFramework</a> &gt; <a href="index.source.html" class="el_package">com.maincode</a> &gt; <span class="el_source">GETrequest.java</span></div><h1>GETrequest.java</h1><pre class="source lang-java linenums">package com.maincode;
+
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.testng.annotations.BeforeClass;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.http.Cookie;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import static org.hamcrest.Matchers.*;
+
+import java.util.List;
+import java.util.Map;
+
+import io.restassured.response.Response;
+import org.testng.Assert;
+
+
+<span class="fc" id="L26">public class GETrequest {</span>
+	
+	
+	public String getSinglePhotoAPI_String() {
+		
+		String myResponse = 
+				
+<span class="fc" id="L33">		RestAssured.given()</span>
+		
+<span class="fc" id="L35">		.when()</span>
+<span class="fc" id="L36">		    .get(&quot;http://jsonplaceholder.typicode.com/photos/1&quot;)</span>
+<span class="fc" id="L37">		 .then()</span>
+<span class="fc" id="L38">		    .extract().asString();</span>
+		
+<span class="fc" id="L40">		return myResponse;</span>
+		
+	}
+	
+	public Response getSinglePhotoAPI_Response() {
+	
+		Response response =
+				
+<span class="fc" id="L48">				RestAssured.given()</span>
+				
+<span class="fc" id="L50">				.when()</span>
+<span class="fc" id="L51">				    .get(&quot;http://jsonplaceholder.typicode.com/photos/1&quot;)</span>
+<span class="fc" id="L52">				 .then()</span>
+<span class="fc" id="L53">				    .extract().response();</span>
+		
+<span class="fc" id="L55">		return response;			</span>
+		
+	}
+
+	
+	public Response pathParamSinglePhoto_Response() {
+		
+		Response response = 
+		
+<span class="nc" id="L64">		RestAssured.given()</span>
+<span class="nc" id="L65">		.contentType(ContentType.JSON)</span>
+<span class="nc" id="L66">		.with()</span>
+<span class="nc" id="L67">		  .pathParams(&quot;post&quot;,&quot;1&quot;)</span>
+		    			    	
+<span class="nc" id="L69">		.when()</span>
+<span class="nc" id="L70">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/{post}&quot;)</span>
+		   
+<span class="nc" id="L72">		 .then()</span>
+<span class="nc" id="L73">		   .extract().response();</span>
+		
+<span class="nc" id="L75">		return response;</span>
+		   		
+}
+
+	
+	public Response queryParamSinglePhoto_Response() {
+	
+		Response response = 
+	
+<span class="fc" id="L84">		RestAssured.given()</span>
+<span class="fc" id="L85">		.contentType(ContentType.JSON)</span>
+<span class="fc" id="L86">		.with()</span>
+<span class="fc" id="L87">		  .queryParams(&quot;id&quot;,1)</span>
+		    			    	
+<span class="fc" id="L89">		.when()</span>
+<span class="fc" id="L90">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)</span>
+		   
+<span class="fc" id="L92">		 .then()</span>
+<span class="fc" id="L93">		    .extract().response();</span>
+		
+<span class="fc" id="L95">		return response;</span>
+		
+	
+}
+	
+	
+	public String pathParamSinglePhoto_String() {
+		
+		String response = 
+		
+<span class="nc" id="L105">		RestAssured.given()</span>
+<span class="nc" id="L106">		.contentType(ContentType.JSON)</span>
+<span class="nc" id="L107">		.with()</span>
+<span class="nc" id="L108">		  .pathParams(&quot;post&quot;,&quot;1&quot;)</span>
+		    			    	
+<span class="nc" id="L110">		.when()</span>
+<span class="nc" id="L111">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/{post}&quot;)</span>
+		   
+<span class="nc" id="L113">		 .then()</span>
+<span class="nc" id="L114">		   .extract().asString();</span>
+		
+<span class="nc" id="L116">		return response;</span>
+		   		
+}
+
+	
+	public String queryParamSinglePhoto_String() {
+	
+		String response = 
+	
+<span class="nc" id="L125">		RestAssured.given()</span>
+<span class="nc" id="L126">		.contentType(ContentType.JSON)</span>
+<span class="nc" id="L127">		.with()</span>
+<span class="nc" id="L128">		  .queryParams(&quot;id&quot;,1)</span>
+		    			    	
+<span class="nc" id="L130">		.when()</span>
+<span class="nc" id="L131">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)</span>
+		   
+<span class="nc" id="L133">		 .then()</span>
+<span class="nc" id="L134">		    .extract().asString();</span>
+		
+<span class="nc" id="L136">		return response;</span>
+
+	}
+
+	public String AllPhotos_String() {
+		
+		String response = 
+	
+<span class="nc" id="L144">		RestAssured.given()</span>
+<span class="nc" id="L145">		.contentType(ContentType.JSON)</span>
+				    			    	
+<span class="nc" id="L147">		.when()</span>
+<span class="nc" id="L148">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)</span>
+		   
+<span class="nc" id="L150">		 .then()</span>
+<span class="nc" id="L151">		    .extract().asString();</span>
+		
+<span class="nc" id="L153">		return response;</span>
+
+	}
+        /*  Dont know whether the specific below response pattern will work for assert not null or not in the test class*/
+//			public Response AllPhotos_Response() {
+//					
+//					Response response = 
+//				
+//					RestAssured.given()
+//					.contentType(ContentType.JSON)
+//							    			    	
+//					.when()
+//					   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)
+//					   
+//					 .then()
+//					    .extract().response();
+//					
+//					return response;
+
+//	}
+
+//*************All the below mentioned test scenarios, just check for status code ********************
+
+	
+	public Response invalidTLS() {	
+		
+		Response response = 
+		
+<span class="nc" id="L181">		RestAssured.given()</span>
+<span class="nc" id="L182">		  .relaxedHTTPSValidation(&quot;TLS&quot;)</span>
+<span class="nc" id="L183">		 .when()	   </span>
+<span class="nc" id="L184">		   .get(&quot;https://www.bupa.com.au/ &quot;)</span>
+<span class="nc" id="L185">		   .then()</span>
+<span class="nc" id="L186">		   .extract().response();</span>
+		
+<span class="nc" id="L188">		return response;</span>
+		
+		
+		}
+	
+	public Response invalidCertificates() {	
+		
+		Response response =
+<span class="nc" id="L196">		RestAssured.given()</span>
+<span class="nc" id="L197">		  .relaxedHTTPSValidation()</span>
+<span class="nc" id="L198">		 .when()	   </span>
+<span class="nc" id="L199">		   .get(&quot;https://www.bupa.com.au/ &quot;)</span>
+<span class="nc" id="L200">		   .then()</span>
+<span class="nc" id="L201">             .extract().response();</span>
+		
+<span class="nc" id="L203">		return response;</span>
+		
+		
+		
+		}
+	
+	public Response  loggingTest() {
+		
+		Response response = 
+<span class="nc" id="L212">		RestAssured.given()</span>
+<span class="nc" id="L213">		  .auth().digest(&quot;username&quot;,&quot;password&quot;)	</span>
+<span class="nc" id="L214">		 .when()	   </span>
+<span class="nc" id="L215">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/1 &quot;)</span>
+<span class="nc" id="L216">		   .then()</span>
+<span class="nc" id="L217">               .extract().response();</span>
+		
+<span class="nc" id="L219">		return response;</span>
+		
+		}
+	
+	public Response digestAuthentication() {
+		
+		Response response = 
+<span class="nc" id="L226">		RestAssured.given()</span>
+<span class="nc" id="L227">		  .auth().digest(&quot;username&quot;,&quot;password&quot;)	</span>
+<span class="nc" id="L228">		 .when()	   </span>
+<span class="nc" id="L229">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/1 &quot;)</span>
+<span class="nc" id="L230">		   .then()</span>
+<span class="nc" id="L231">		   .extract().response();</span>
+		
+<span class="nc" id="L233">		return response;</span>
+		}
+	
+	public Response preemptiveAuthentication() {
+		
+		Response response = 
+<span class="nc" id="L239">		RestAssured.given()</span>
+<span class="nc" id="L240">		  .auth().preemptive().basic(&quot;username&quot;,&quot;password&quot;)	</span>
+<span class="nc" id="L241">		 .when()	   </span>
+<span class="nc" id="L242">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/1 &quot;)</span>
+<span class="nc" id="L243">		   .then()</span>
+<span class="nc" id="L244">                 .extract().response();</span>
+		
+<span class="nc" id="L246">		return response;</span>
+		
+		
+		
+		}
+	public Response challengedAuthentication() {
+		
+		Response response = 
+<span class="nc" id="L254">		RestAssured.given()</span>
+<span class="nc" id="L255">		  .auth().basic(&quot;username&quot;,&quot;password&quot;)	</span>
+<span class="nc" id="L256">		  .when()	   </span>
+<span class="nc" id="L257">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/1 &quot;)</span>
+<span class="nc" id="L258">		   .then()</span>
+<span class="nc" id="L259">                .extract().response();</span>
+		
+<span class="nc" id="L261">		return response;</span>
+		
+		}
+	public Response getSetHeader() {
+		
+		Response response = 
+		
+<span class="nc" id="L268">		RestAssured.given()</span>
+<span class="nc" id="L269">		   .header(&quot;Hey&quot;, &quot;1&quot;)</span>
+<span class="nc" id="L270">		   .headers(&quot;bye&quot; , &quot;val1&quot;,&quot;rey&quot;,&quot;val2&quot;) // to set 2 pair of header values </span>
+<span class="nc" id="L271">		   .when()	   </span>
+<span class="nc" id="L272">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/1 &quot;)</span>
+<span class="nc" id="L273">		   .then()</span>
+<span class="nc" id="L274">                 .extract().response();</span>
+		
+<span class="nc" id="L276">		return response;</span>
+	}
+	
+	public Response getSetCookie() {
+		
+		Response response = 
+<span class="nc" id="L282">		RestAssured.given()</span>
+<span class="nc" id="L283">		   .cookie(&quot;Hey&quot;, &quot;1&quot;)</span>
+<span class="nc" id="L284">		   .cookie(&quot;bye&quot; , &quot;val1&quot;,&quot;val2&quot;,&quot;val3&quot;) // to set multiple cookie values to one cookie key</span>
+<span class="nc" id="L285">		   .when()	   </span>
+<span class="nc" id="L286">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/1 &quot;)</span>
+<span class="nc" id="L287">		   .then()</span>
+<span class="nc" id="L288">                 .extract().response();</span>
+		
+<span class="nc" id="L290">		return response;</span>
+	}
+	
+	public Response getDetailedCookies() {
+		
+		Response href1 =
+				
+<span class="nc" id="L297">		RestAssured.given()</span>
+<span class="nc" id="L298">		 .when()</span>
+<span class="nc" id="L299">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)</span>
+		
+<span class="nc" id="L301">		.then()</span>
+<span class="nc" id="L302">		.extract().response();</span>
+		
+<span class="nc" id="L304">		return href1;</span>
+		  
+//	  Cookie a = href1.getDetailedCookie(&quot;__cfduid&quot;);
+//	  System.out.println(a.getValue());
+//	  System.out.println(a.getVersion());
+//	  System.out.println(a.hasExpiryDate());
+//	  System.out.println(a.hasValue());
+	  
+	}
+	
+	public Response getCookies() {
+		
+		Response href1 =
+				
+<span class="nc" id="L318">		RestAssured.given()</span>
+<span class="nc" id="L319">		 .when()</span>
+<span class="nc" id="L320">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)</span>
+<span class="nc" id="L321">		 .then()</span>
+<span class="nc" id="L322">		 .extract().response();</span>
+		
+<span class="nc" id="L324">		return href1;</span>
+		  
+//		Map&lt;String, String&gt; cookies = href1.getCookies();
+//		
+//		for (Map.Entry&lt;String, String&gt; entry: cookies.entrySet()) {
+//			System.out.println(entry.getKey() + &quot;   &quot; + entry.getValue());
+			
+		}
+	
+	public Response getHeaders() {
+		
+		Response href1 =
+				
+<span class="nc" id="L337">		RestAssured.given()</span>
+<span class="nc" id="L338">		 .when()</span>
+<span class="nc" id="L339">		   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)</span>
+		
+<span class="nc" id="L341">		.then()</span>
+<span class="nc" id="L342">		.extract().response();</span>
+		
+<span class="nc" id="L344">		return href1;</span>
+		  
+//		Headers header = href1.getHeaders();
+//		for (Header h:header) {
+//			
+//			System.out.println(h.getName()+ &quot;   &quot; + h.getValue());
+	
+		
+		}
+		
+		public String getList() {
+			
+			String href1 =
+					
+<span class="fc" id="L358">			RestAssured.given()</span>
+<span class="fc" id="L359">			 .when()</span>
+<span class="fc" id="L360">			   .get(&quot;http://jsonplaceholder.typicode.com/photos/&quot;)</span>
+<span class="fc" id="L361">			   .then()</span>
+<span class="fc" id="L362">			    .extract()</span>
+<span class="fc" id="L363">			    .asString();</span>
+			
+<span class="fc" id="L365">			return href1;</span>
+			
+//			JsonPath jpath = new JsonPath(href1);			
+//			List&lt;String&gt; ls = jpath.get(&quot;name&quot;);
+//			System.out.println(&quot;size is &quot; + ls.size());
+
+
+		}
+			
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

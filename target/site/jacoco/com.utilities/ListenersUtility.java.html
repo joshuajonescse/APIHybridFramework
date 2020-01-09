@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ListenersUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">APIHybridFramework</a> &gt; <a href="index.source.html" class="el_package">com.utilities</a> &gt; <span class="el_source">ListenersUtility.java</span></div><h1>ListenersUtility.java</h1><pre class="source lang-java linenums">package com.utilities;
+
+import org.testng.ITestContext;
+
+import org.testng.ITestResult;
+import org.testng.TestListenerAdapter;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+<span class="nc" id="L14">public class ListenersUtility extends TestListenerAdapter{</span>
+	
+	public ExtentHtmlReporter htmlReporter;
+	public ExtentReports extent;
+	public ExtentTest test;
+	
+	public void onStart(ITestContext testContext)
+	{
+<span class="nc" id="L22">		htmlReporter=new ExtentHtmlReporter(System.getProperty(&quot;user.dir&quot;)+ &quot;/Reports/myReport.html&quot;);//specify location of the report</span>
+				
+<span class="nc" id="L24">		htmlReporter.config().setDocumentTitle(&quot;Automation Report&quot;); // Tile of report</span>
+<span class="nc" id="L25">		htmlReporter.config().setReportName(&quot;Rest API Testing Report&quot;); // name of the report</span>
+		//htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP); //location of the chart
+<span class="nc" id="L27">		htmlReporter.config().setTheme(Theme.DARK);</span>
+		
+<span class="nc" id="L29">		extent=new ExtentReports();</span>
+<span class="nc" id="L30">		extent.attachReporter(htmlReporter);</span>
+<span class="nc" id="L31">		extent.setSystemInfo(&quot;Project Name&quot;,&quot;APIHybridFramework&quot;);</span>
+<span class="nc" id="L32">		extent.setSystemInfo(&quot;Host name&quot;,&quot;localhost&quot;);</span>
+<span class="nc" id="L33">		extent.setSystemInfo(&quot;Environemnt&quot;,&quot;QA&quot;);</span>
+<span class="nc" id="L34">		extent.setSystemInfo(&quot;user&quot;,&quot;Joshua&quot;);</span>
+			
+<span class="nc" id="L36">	}</span>
+	
+	public void onTestSuccess(ITestResult result)
+	{
+		//test=extent.createTest(result.getClass().getName());
+		//test.createNode(result.getName());
+<span class="nc" id="L42">		test=extent.createTest(result.getName()); // create new entry in th report</span>
+				
+<span class="nc" id="L44">		test.log(Status.PASS, &quot;Test Case PASSED IS &quot; + result.getName());</span>
+<span class="nc" id="L45">	}</span>
+	
+	public void onTestFailure(ITestResult result)
+	{
+<span class="nc" id="L49">		test=extent.createTest(result.getName()); // create new entry in th report</span>
+		
+<span class="nc" id="L51">		test.log(Status.FAIL, &quot;TEST CASE FAILED IS &quot; + result.getName()); // to add name in extent report</span>
+<span class="nc" id="L52">		test.log(Status.FAIL, &quot;TEST CASE FAILED IS &quot; + result.getThrowable()); // to add error/exception in extent report</span>
+	
+<span class="nc" id="L54">	}</span>
+	
+	public void onTestSkipped(ITestResult result)
+	{
+<span class="nc" id="L58">		test=extent.createTest(result.getName()); // create new entry in th report</span>
+<span class="nc" id="L59">		test.log(Status.SKIP, &quot;Test Case SKIPPED IS &quot; + result.getName());</span>
+<span class="nc" id="L60">	}</span>
+	
+	public void onFinish(ITestContext testContext)
+	{
+<span class="nc" id="L64">		extent.flush();</span>
+<span class="nc" id="L65">	}</span>
+	
+	}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

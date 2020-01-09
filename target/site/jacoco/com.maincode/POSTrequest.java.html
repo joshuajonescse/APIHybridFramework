@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>POSTrequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">APIHybridFramework</a> &gt; <a href="index.source.html" class="el_package">com.maincode</a> &gt; <span class="el_source">POSTrequest.java</span></div><h1>POSTrequest.java</h1><pre class="source lang-java linenums">package com.maincode;
+
+import org.testng.annotations.BeforeClass;
+
+import org.testng.annotations.Test;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.testng.annotations.BeforeClass;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.http.Cookie;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import static org.hamcrest.Matchers.*;
+
+import java.util.HashMap;
+
+
+<span class="fc" id="L23">public class POSTrequest {</span>
+	
+<span class="fc" id="L25">	HashMap map = new HashMap(); </span>
+	
+	public Response postAPI() {
+		
+<span class="fc" id="L29">		map.put(&quot;name&quot;,&quot;kamal&quot;);</span>
+<span class="fc" id="L30">		map.put(&quot;job&quot;, &quot;cricket&quot;);</span>
+		
+		Response response = 
+		
+	
+<span class="fc" id="L35">	RestAssured.given()</span>
+<span class="fc" id="L36">	   .contentType(ContentType.JSON)</span>
+<span class="fc" id="L37">	   .body(map)</span>
+	   
+<span class="fc" id="L39">	 .when()</span>
+<span class="fc" id="L40">	     .post(&quot;https://reqres.in/api/users&quot;)</span>
+	     
+<span class="fc" id="L42">	     .then()</span>
+<span class="fc" id="L43">	        .extract().response();</span>
+	
+<span class="fc" id="L45">	return response;</span>
+	
+	
+	
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
